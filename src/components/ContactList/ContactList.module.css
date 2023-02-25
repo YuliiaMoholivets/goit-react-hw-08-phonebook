@@ -1,0 +1,36 @@
+.list {
+    margin-top: 30px;
+    color: black;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+
+.item {
+    display: flex;
+    justify-content: flex-end;
+    padding: 2px;
+}
+
+.item:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.text {
+    margin-right: 10px;
+}
+
+.btn {
+    height: auto;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 16px;
+    padding: 2px;
+    border-radius: 5px;
+    border: none;
+}
+
+.item:hover,
+.btn:hover {
+    color: red;
+}
