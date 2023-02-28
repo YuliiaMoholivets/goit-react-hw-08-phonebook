@@ -1,7 +1,7 @@
 .label {
-    margin-top: 10px;
-    font-weight: 500;
-    font-size: 18px;
+    margin-top: 15px;
+    font-weight: 900;
+    font-size: 22px;
 }
 
 .input {
@@ -16,5 +16,5 @@
 }
 
 .input:focus {
-    outline-color: rgb(177, 158, 158);
+    outline-color: #5b5190;
 }

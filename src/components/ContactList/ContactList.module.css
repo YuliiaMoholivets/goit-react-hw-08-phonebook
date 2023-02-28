@@ -8,8 +8,9 @@
 
 .item {
     display: flex;
-    justify-content: flex-end;
-    padding: 2px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px;
 }
 
 .item:not(:last-child) {
@@ -24,7 +25,7 @@
     height: auto;
     cursor: pointer;
     display: inline-block;
-    font-size: 16px;
+    font-size: 14px;
     padding: 2px;
     border-radius: 5px;
     border: none;
@@ -32,5 +33,5 @@
 
 .item:hover,
 .btn:hover {
-    color: red;
+    color: #5b5190;
 }

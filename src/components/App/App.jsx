@@ -1,24 +1,31 @@
-import { CreateContact} from 'components/Form/ContactForm';
-import { ContactFilter } from 'components/ContactFilter/ContactFilter';
-import { ContactsList} from 'components/ContactList/ContactsList';
-import styles from './App.module.css';
+
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { fetchContacts } from 'redux/operations';
-import { contactsSelect, getError, getIsLoading } from 'redux/selector';
-import { ToastContainer, toast } from 'react-toastify';
+import { lazy, Suspense, useEffect } from 'react';
+import { fetchCurrentUser } from 'redux/auth/operation';  
+import { getError} from 'redux/contacts/selector';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Loader } from 'components/Loader/Loader'; 
+import { AppBar } from 'components/AppBar/AppBar';
+import { Route, Routes } from 'react-router-dom';
+import { selectIsRefreshing } from 'redux/auth/selectors';
+import { selectUserName } from 'redux/auth/selectors';
+
+const Home = lazy(() => import('pages/Home'));
+const Register = lazy(() => import('pages/Register'));
+const Login = lazy(() => import('pages/Login'));
+const ContactsPage = lazy(() => import('pages/Contacts'));
+const Page404 = lazy(() => import('pages/Page404'));
 
 export function App() {
-  const loading = useSelector(getIsLoading);
   const error = useSelector(getError);
   const dispatch = useDispatch();
-  const contactsAdd = useSelector(contactsSelect);
+  const isRefreshing = useSelector(selectIsRefreshing);
+  const user = useSelector(selectUserName);
   
   useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
+    dispatch(fetchCurrentUser());
+  }, [dispatch, user]);
 
  useEffect(() => {
     if (error) {
@@ -26,25 +33,25 @@ export function App() {
     }
  }, [error]);
   
+  
   return (
-    <div className={styles.container}>
-      <CreateContact />
-        {contactsAdd.length === 0 ? (
-        <p>There is no contacts</p>
+    <>
+      <AppBar />
+      {isRefreshing ? (
+        <Loader />
       ) : (
-        <>
-          <ContactFilter />
-          <ContactsList />
-        </>
-      )} 
-        {loading && <Loader />}
-      <ToastContainer
-        position="top-center"
-        autoClose={5000}
-        closeOnClick
-        theme="colored" 
-       />
-    </div>
+        <Suspense fallback={<Loader />}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="register" element={<Register />} />
+            <Route path="login" element={<Login />} />
+            <Route path="contacts" element={<ContactsPage />} />
+            <Route path="*" element={<Page404 />} />
+          </Routes>
+        </Suspense>
+      )}
+    </>
   );
+  
 };
 

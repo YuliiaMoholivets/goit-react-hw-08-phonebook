@@ -5,8 +5,8 @@
 
 .label {
     margin-top: 10px;
-    font-weight: 500;
-    font-size: 18px;
+    font-weight: 900;
+    font-size: 22px;
 }
 
 .input {
@@ -22,7 +22,7 @@
 }
 
 .input:focus {
-    outline-color: rgb(177, 158, 158);
+    outline-color: #91cdd6;
 }
 
 .btn {
@@ -34,10 +34,11 @@
     padding: 6px;
     border: none;
     border-radius: 5px;
+    width: 100%;
 }
 
 .btn:hover {
-    background-color: blue;
-    color: white;
+    background-color: #5b5190;
+    color: #91cdd6;
 
 }
