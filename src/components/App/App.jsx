@@ -9,7 +9,7 @@ import { Loader } from 'components/Loader/Loader';
 import { AppBar } from 'components/AppBar/AppBar';
 import { Route, Routes } from 'react-router-dom';
 import { selectIsRefreshing } from 'redux/auth/selectors';
-import { selectUserName } from 'redux/auth/selectors';
+// import { selectUserName } from 'redux/auth/selectors';
 
 const Home = lazy(() => import('pages/Home'));
 const Register = lazy(() => import('pages/Register'));
@@ -21,11 +21,11 @@ export function App() {
   const error = useSelector(getError);
   const dispatch = useDispatch();
   const isRefreshing = useSelector(selectIsRefreshing);
-  const user = useSelector(selectUserName);
+  // const user = useSelector(selectUserName);
   
   useEffect(() => {
     dispatch(fetchCurrentUser());
-  }, [dispatch, user]);
+  }, [dispatch]);
 
  useEffect(() => {
     if (error) {
@@ -43,9 +43,9 @@ export function App() {
         <Suspense fallback={<Loader />}>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="register" element={<Register />} />
-            <Route path="login" element={<Login />} />
-            <Route path="contacts" element={<ContactsPage />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/contacts" element={<ContactsPage />} />
             <Route path="*" element={<Page404 />} />
           </Routes>
         </Suspense>

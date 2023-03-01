@@ -74,7 +74,9 @@ return (
             fullWidth
             name="password"
             label="Password"
-            type="password"
+          type="password"
+          minLength={7}
+          maxLength={30}
             autoComplete="current-password"
             value={password}
             variant="standard"

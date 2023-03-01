@@ -1,4 +1,4 @@
-
+import { NavLink } from 'react-router-dom';
 import { UserMenu } from '../UserMenu/UserMenu';
 import { AuthNav } from '../AuthNav/AuthNav';
 import css from './AppBar.module.css';
@@ -10,7 +10,16 @@ export const AppBar = () => {
 
   return (
     <header className={css.header}>
-      
+       <nav>
+      <NavLink className={css.link} to="/">
+        Home
+      </NavLink>
+      {isLoggedIn && (
+        <NavLink className={css.link} to="/contacts">
+          Contacts
+        </NavLink>
+      )}
+    </nav>
       {isLoggedIn ? 
         <UserMenu /> : <AuthNav />}
     </header>

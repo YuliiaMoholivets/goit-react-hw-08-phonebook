@@ -66,7 +66,9 @@ return (
             label="User name"
             name="name"
             autoComplete="name"
-            autoFocus
+          autoFocus
+           minLength={2}
+          maxLength={30}
             value={name}
             variant="standard"
             onChange={handleChange}
@@ -89,7 +91,9 @@ return (
             fullWidth
             name="password"
             label="Password"
-            type="password"
+          type="password"
+           minLength={7}
+           maxLength={30}
             autoComplete="current-password"
             value={password}
             variant="standard"

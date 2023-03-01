@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 function Page404() {
   const navigate = useNavigate();
@@ -15,6 +15,8 @@ function Page404() {
   return (
     <div>
       <h3>Page not Found!</h3>
+      <button type="submit" >
+        <NavLink to='/'>Go Back</NavLink> </button>
     </div>
   );
 }
