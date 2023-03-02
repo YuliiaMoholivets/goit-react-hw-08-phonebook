@@ -75,8 +75,10 @@ return (
             name="password"
             label="Password"
           type="password"
-          minLength={7}
-          maxLength={30}
+          inputProps={{
+            minLength:7,
+            maxLength:30
+          }}
             autoComplete="current-password"
             value={password}
             variant="standard"

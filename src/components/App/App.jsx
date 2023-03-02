@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { lazy, Suspense, useEffect } from 'react';
 import { fetchCurrentUser } from 'redux/auth/operation';  
 import { getError} from 'redux/contacts/selector';
-import { toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Loader } from 'components/Loader/Loader'; 
 import { AppBar } from 'components/AppBar/AppBar';
@@ -50,6 +50,12 @@ export function App() {
           </Routes>
         </Suspense>
       )}
+         <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        closeOnClick
+        theme="colored" 
+       />
     </>
   );
   

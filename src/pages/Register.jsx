@@ -67,8 +67,10 @@ return (
             name="name"
             autoComplete="name"
           autoFocus
-           minLength={2}
-          maxLength={30}
+           inputProps={{
+            minLength:2,
+            maxLength:30
+          }}
             value={name}
             variant="standard"
             onChange={handleChange}
@@ -92,8 +94,10 @@ return (
             name="password"
             label="Password"
           type="password"
-           minLength={7}
-           maxLength={30}
+         inputProps={{
+            minLength:7,
+            maxLength:30
+          }}
             autoComplete="current-password"
             value={password}
             variant="standard"

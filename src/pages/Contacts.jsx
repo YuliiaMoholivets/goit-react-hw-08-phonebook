@@ -5,7 +5,7 @@ import styles from '../components/App/App.module.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchContacts } from 'redux/contacts/operations'; 
-import { ToastContainer, toast } from 'react-toastify';
+import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Loader } from 'components/Loader/Loader';
 import UseAuth from 'hooks/useAuth';
@@ -42,12 +42,7 @@ const PageContacts = () => {
         </>
       )} 
         {loading && <Loader />}
-      <ToastContainer
-        position="top-center"
-        autoClose={5000}
-        closeOnClick
-        theme="colored" 
-       />
+   
     </div>
   );
 };
